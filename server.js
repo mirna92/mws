@@ -8,19 +8,20 @@ const conn = require('./dbConnection');
 const bcrypt = require('bcryptjs');
 const app = express();
 const jwt = require('jsonwebtoken');
- 
+app.use(express.static('public'));// to use public front-end resource
+
 app.use(express.json());
  
 app.use(bodyParser.json());
- 
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.use(cors());
+    app.use(cors());
  
     app.use('/api', indexRouter);
- 
+  
 // Handling Errors
 app.use((err, req, res, next) => {
     // console.log(err);
